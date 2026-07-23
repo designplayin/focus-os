@@ -1,0 +1,192 @@
+/* ── FocusOS v0.3 ── */
+
+/* Homepage recommendations */
+.focusos-homepage ytd-browse[page-subtype="home"] #contents,
+.focusos-homepage ytd-rich-grid-renderer {
+  display: none !important;
+}
+
+/* Shorts */
+.focusos-active ytd-guide-entry-renderer a[title="Shorts"],
+.focusos-active ytd-mini-guide-entry-renderer a[title="Shorts"],
+.focusos-active ytd-guide-entry-renderer a[href="/shorts/"],
+.focusos-active ytd-mini-guide-entry-renderer a[href="/shorts/"],
+.focusos-active ytd-reel-shelf-renderer,
+.focusos-active ytd-rich-shelf-renderer[is-shorts],
+.focusos-active [overlay-style="SHORTS"],
+.focusos-active ytd-rich-item-renderer:has([overlay-style="SHORTS"]),
+.focusos-active ytd-grid-video-renderer:has(a[href^="/shorts/"]) {
+  display: none !important;
+}
+
+/* Watch page: recommendation sidebar */
+.focusos-watch #secondary,
+.focusos-watch #related,
+.focusos-watch ytd-watch-next-secondary-results-renderer,
+.focusos-watch ytd-item-section-renderer[section-identifier="related-items"] {
+  display: none !important;
+}
+
+/* End cards (last ~20s of video) */
+.focusos-active .ytp-ce-element,
+.focusos-active .ytp-ce-video,
+.focusos-active .ytp-ce-channel,
+.focusos-active .ytp-ce-playlist,
+.focusos-active .ytp-ce-covering-overlay,
+.focusos-active .ytp-ce-covering-image,
+.focusos-active .ytp-ce-element-shadow,
+.focusos-active .ytp-ce-covering-shadow-top,
+.focusos-active .ytp-ce-video-title,
+.focusos-active .ytp-ce-video-duration {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* End screen + "More videos" overlay (pause + after video ends) */
+.focusos-active .html5-endscreen,
+.focusos-active .videowall-endscreen,
+.focusos-active .ytp-endscreen-content,
+.focusos-active .ytp-endscreen-paginate,
+.focusos-active .ytp-show-tiles,
+.focusos-active .ytp-pause-overlay,
+.focusos-active .ytp-pause-overlay-container,
+.focusos-active .ytp-scroll-min,
+.focusos-active .ytp-suggested-action,
+.focusos-active .ytp-videowall-still,
+.focusos-active .ytp-videowall-still-info,
+.focusos-active .ytp-videowall-still-info-content,
+.focusos-active .ytp-autonav-endscreen-countdown-container,
+.focusos-active ytd-endscreen-renderer,
+.focusos-active ytd-watch-flexy #full-bleed-container ytd-rich-grid-renderer {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* ── Bare homepage overlay (no search results) ── */
+#focusos-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  margin-top: -72px;
+}
+
+.focusos-overlay-inner {
+  text-align: center;
+  max-width: 480px;
+  padding: 2rem;
+}
+
+/* Meditation icon + breathe animation */
+.focusos-meditation {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.focusos-meditation-icon {
+  width: 52px;
+  height: 52px;
+  color: #9ec5d8;
+  position: relative;
+  z-index: 2;
+  animation: focusos-breathe-icon 4s ease-in-out infinite;
+}
+
+.focusos-breathe-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(158, 197, 216, 0.35);
+  animation: focusos-breathe-ring 4s ease-in-out infinite;
+}
+
+.focusos-breathe-ring:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.focusos-breathe-ring:nth-child(2) {
+  animation-delay: 1.33s;
+}
+
+.focusos-breathe-ring:nth-child(3) {
+  animation-delay: 2.66s;
+}
+
+@keyframes focusos-breathe-icon {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.82;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+
+@keyframes focusos-breathe-ring {
+  0% {
+    transform: scale(0.75);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focusos-meditation-icon,
+  .focusos-breathe-ring {
+    animation: none;
+  }
+
+  .focusos-breathe-ring {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+}
+
+.focusos-title {
+  font-family: "YouTube Sans", "Roboto", system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--yt-spec-text-primary, #f1f1f1);
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.03em;
+}
+
+.focusos-subtitle {
+  font-family: "Roboto", system-ui, sans-serif;
+  font-size: 1rem;
+  color: var(--yt-spec-text-secondary, #aaa);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Keep search accessible and above overlay */
+.focusos-homepage ytd-searchbox,
+.focusos-homepage #search-form,
+.focusos-homepage ytd-masthead {
+  position: relative;
+  z-index: 10;
+}
+
+.focusos-homepage ytd-masthead {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}

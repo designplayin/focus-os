@@ -1,0 +1,119 @@
+body {
+  width: 240px;
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #0f0f0f;
+  color: #f1f1f1;
+}
+
+.popup {
+  padding: 1.25rem;
+}
+
+.focusos-meditation {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.focusos-meditation-icon {
+  width: 40px;
+  height: 40px;
+  color: #9ec5d8;
+  position: relative;
+  z-index: 2;
+  animation: focusos-breathe-icon 4s ease-in-out infinite;
+}
+
+.focusos-breathe-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(158, 197, 216, 0.35);
+  animation: focusos-breathe-ring 4s ease-in-out infinite;
+}
+
+.focusos-breathe-ring:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.focusos-breathe-ring:nth-child(2) {
+  animation-delay: 1.33s;
+}
+
+.focusos-breathe-ring:nth-child(3) {
+  animation-delay: 2.66s;
+}
+
+@keyframes focusos-breathe-icon {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.82;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 1;
+  }
+}
+
+@keyframes focusos-breathe-ring {
+  0% {
+    transform: scale(0.75);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .focusos-meditation-icon,
+  .focusos-breathe-ring {
+    animation: none;
+  }
+
+  .focusos-breathe-ring {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+}
+
+h1 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+}
+
+.tagline {
+  font-size: 0.8rem;
+  color: #888;
+  margin: 0 0 1rem;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  background: #3ea6ff;
+  color: #0f0f0f;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #65b8ff;
+}
